@@ -1,0 +1,9 @@
+# Arquivos e pastas do Visual Studio Code
+.vscode/
+
+# Arquivos de dados de usuários (informação sensível)
+usuarios/usuarios.json
+
+# Cache e arquivos compilados do Python
+__pycache__/
+*.pyc
