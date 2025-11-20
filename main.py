@@ -33,7 +33,7 @@ def obter_dados_usuario(cpf):  # lê os dados do usuário a partir do cpf e reto
     try:
         with open("usuarios.txt", "r") as arquivo:
             for linha in arquivo:
-                dados = linha.strip().split('|') # remove quebras de linha e separa por '|'
+                dados = linha.strip().split('|') #Remove quebras de linha e separa por '|'
                 if len(dados) == 4:
                     cpf_arquivo = dados[0]
                     if cpf_arquivo == cpf:
