@@ -1,0 +1,10 @@
+# Arquivos e pastas do Visual Studio Code
+.vscode/
+
+# Arquivos de dados de usuários (informação sensível) - Ignora o arquivo, mas não a pasta
+usuarios/usuarios.txt
+
+# Cache e arquivos compilados do Python
+__pycache__/
+*.pyc
+
