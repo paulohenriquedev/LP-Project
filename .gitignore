@@ -2,7 +2,7 @@
 .vscode/
 
 # Arquivos de dados de usuários (informação sensível)
-usuarios/usuarios.json
+usuarios.txt
 
 # Cache e arquivos compilados do Python
 __pycache__/
