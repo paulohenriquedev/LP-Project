@@ -1,4 +1,4 @@
-def menu_usuario_logado(usuario):  # exibe o menu para o usuário logado
+def menu_usuario_logado(usuario):  # Exibe o menu para o usuário logado
     """
     O parâmetro 'usuario' é um dicionário: {'cpf': ..., 'senha': ..., 'nome': ..., 'saldo': ...}
     """
@@ -29,11 +29,11 @@ def menu_usuario_logado(usuario):  # exibe o menu para o usuário logado
                 print("\nOpção inválida! Tente novamente.")
 
 
-def obter_dados_usuario(cpf):  # lê os dados do usuário a partir do cpf e retorna uma lista com os dados
+def obter_dados_usuario(cpf):  # Lê os dados do usuário a partir do cpf e retorna uma lista com os dados
     try:
         with open("usuarios.txt", "r") as arquivo:
             for linha in arquivo:
-                dados = linha.strip().split('|') #Remove quebras de linha e separa por '|'
+                dados = linha.strip().split('|') # Remove quebras de linha e separa por '|'
                 if len(dados) == 4:
                     cpf_arquivo = dados[0]
                     if cpf_arquivo == cpf:
@@ -137,7 +137,6 @@ def logar():
                     cpf_arq = dados[0]
                     senha_arq = dados[1]
 
-                    # Verifica se o CPF e a senha correspondem
                     if cpf_arq == cpf and senha_arq == senha:
                         nome = dados[2]
                         saldo = float(dados[3])
@@ -148,10 +147,9 @@ def logar():
                             'saldo': saldo
                         }
                         print(f"\nLogin bem-sucedido! Bem-vindo(a), {nome}!")
-                        menu_usuario_logado(usuario)  # Chama o menu do usuário
-                        return  # Sai da função logar após o sucesso
+                        menu_usuario_logado(usuario)
+                        return
 
-            # Se terminar o loop e não encontrar
             print("\nCPF ou senha incorretos. Tente novamente.")
 
     except FileNotFoundError:
@@ -167,7 +165,6 @@ def cadastrar():
     senha = input("Digite sua senha: ")
     nome = input("Digite seu nome: ")
 
-    # Verifica se o CPF já existe lendo o arquivo manualmente
     try:
         with open("usuarios.txt", "r") as arquivo:
             for linha in arquivo:
@@ -177,13 +174,10 @@ def cadastrar():
                     input("Pressione Enter para voltar ao menu...")
                     return
     except FileNotFoundError:
-        # Se o arquivo não existe, é o primeiro cadastro, então seguimos em frente
         pass
 
-    # Adiciona o novo usuário (formatado com separadores) ao arquivo
-    # Usa 'a' (append) para adicionar ao final sem apagar o resto
+    # Adiciona o novo usuário ao arquivo
     with open("usuarios.txt", "a") as arquivo:
-        # Formato: cpf|senha|nome|saldo
         linha_nova = f"{cpf}|{senha}|{nome}|0.0\n"
         arquivo.write(linha_nova)
 
