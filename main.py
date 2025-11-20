@@ -31,7 +31,7 @@ def menu_usuario_logado(usuario):  # Exibe o menu para o usuário logado
 
 def obter_dados_usuario(cpf):  # Lê os dados do usuário a partir do cpf e retorna uma lista com os dados
     try:
-        with open("usuarios.txt", "r") as arquivo:
+        with open("usuarios/usuarios.txt", "r") as arquivo:
             for linha in arquivo:
                 dados = linha.strip().split('|') # Remove quebras de linha e separa por '|'
                 if len(dados) == 4:
@@ -97,7 +97,7 @@ def atualizar_dados_usuario(cpf, novo_saldo):
     """Atualiza o saldo de um usuário específico no arquivo."""
     linhas_atualizadas = []
     try:
-        with open("usuarios.txt", "r") as arquivo:
+        with open("usuarios/usuarios.txt", "r") as arquivo:
             for linha in arquivo:
                 dados = linha.strip().split('|')
                 if len(dados) == 4:
@@ -116,7 +116,7 @@ def atualizar_dados_usuario(cpf, novo_saldo):
         return
 
     # Reescreve o arquivo inteiro com os dados atualizados
-    with open("usuarios.txt", "w") as arquivo:
+    with open("usuarios/usuarios.txt", "w") as arquivo:
         arquivo.writelines(linhas_atualizadas)
 
 
@@ -130,7 +130,7 @@ def logar():
     senha = input("Digite sua senha: ")
 
     try:
-        with open("usuarios.txt", "r") as arquivo:
+        with open("usuarios/usuarios.txt", "r") as arquivo:
             for linha in arquivo:
                 dados = linha.strip().split('|')
                 if len(dados) == 4:
@@ -166,7 +166,7 @@ def cadastrar():
     nome = input("Digite seu nome: ")
 
     try:
-        with open("usuarios.txt", "r") as arquivo:
+        with open("usuarios/usuarios.txt", "r") as arquivo:
             for linha in arquivo:
                 dados = linha.strip().split('|')
                 if len(dados) > 0 and dados[0] == cpf:
@@ -177,7 +177,7 @@ def cadastrar():
         pass
 
     # Adiciona o novo usuário ao arquivo
-    with open("usuarios.txt", "a") as arquivo:
+    with open("usuarios/usuarios.txt", "a") as arquivo:
         linha_nova = f"{cpf}|{senha}|{nome}|0.0\n"
         arquivo.write(linha_nova)
 
